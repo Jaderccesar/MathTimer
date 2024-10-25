@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo Matemático</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        #gameScreen, #winScreen, #loseScreen { display: none; }
+        #progressBar { width: 100%; background-color: #ddd; }
+        #progress { width: 0%; height: 30px; background-color: green; }
+        .hidden { display: none; }
+        #level{display: none;}
+    </style>
+</head>
+<body>
+    <div id="startScreen">
+        <h1>Bem-vindo ao Jogo Matemático!</h1>
+        <button onclick="nivel()">Iniciar Jogo</button>
+    </div>
+
+    <div id="gameScreen">
+        <div>
+            <h2>Tempo Restante: <span id="timer">10</span> segundos</h2>
+            <div id="progressBar"><div id="progress"></div></div>
+            <h3>Questão: <span id="question"></span></h3>
+            <input type="text" id="answer" placeholder="Sua resposta">
+            <button onclick="checkAnswer()">Enviar Resposta</button>
+        </div>
+        <p>Fases Restantes: <span id="stagesLeft"></span></p>
+    </div>
+
+    <div id="winScreen">
+        <h1>Parabéns! Você venceu!</h1>
+        <button onclick="restartGame()">Jogar Novamente</button>
+    </div>
+
+    <div id="loseScreen">
+        <h1>Fim de Jogo! Você perdeu.</h1>
+        <button onclick="restartGame()">Tentar Novamente</button>
+    </div>
+
+    <div id="level">
+        <h1>Selecione o modo de jogo!</h1>
+        <button onclick="easy()">Fácil</button>
+        <button onclick="medium()">Médio</button>
+        <button onclick="hard()">Difícil</button>
+    </div>
+
+
+    <script src="index.js"></script>
+</body>
+</html>
