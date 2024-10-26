@@ -25,9 +25,11 @@
             <div id="progressBar"><div id="progress"></div></div>
             <h3>Questão: <span id="question"></span></h3>
             <input type="text" id="answer" placeholder="Sua resposta">
+            <p id="contAnswer" style="display: none;"></p>
             <button onclick="checkAnswer()">Enviar Resposta</button>
         </div>
         <p>Fases Restantes: <span id="stagesLeft"></span></p>
+    <p>Quantidade de Acertos: <span id="correctCount">0</span></p> 
     </div>
 
     <div id="winScreen">
@@ -35,18 +37,19 @@
         <button onclick="restartGame()">Jogar Novamente</button>
     </div>
 
-    <div id="loseScreen">
-        <h1>Fim de Jogo! Você perdeu.</h1>
-        <button onclick="restartGame()">Tentar Novamente</button>
+    <div id="loseScreen" style="display: none;">
+        <p>Você perdeu!</p>
+        <p id="correctAnswerMessage" style="color: red; display: none;"></p> 
+        <button onclick="restartGame()">Jogar Novamente</button>
     </div>
-
+    
     <div id="level">
         <h1>Selecione o modo de jogo!</h1>
-        <button onclick="easy()">Fácil</button>
-        <button onclick="medium()">Médio</button>
-        <button onclick="hard()">Difícil</button>
+        <button onclick="setEasy()">Fácil</button>
+        <button onclick="setMedium()">Médio</button>
+        <button onclick="setHard()">Difícil</button>
+        <button onclick="setFree()">Modo Livre</button>
     </div>
-
 
     <script src="index.js"></script>
 </body>
