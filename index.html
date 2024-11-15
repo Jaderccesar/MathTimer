@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+    <div class="cursor"></div>
+
     <div id="startScreen">
         <h1 class="math">MathTimer</h1>
         <button onclick="nivel()" id="botaoIniciar">Iniciar Jogo</button>
@@ -26,26 +29,40 @@
 
     <div id="gameScreen">
         <div>
-            <h2>Tempo Restante: <span id="timer">10</span> segundos</h2>
+            <h2 id="timer2">Tempo Restante: <span id="timer">10</span> segundos</h2>
             <div id="progressBar"><div id="progress"></div></div>
-            <h3>Questão: <span id="question"></span></h3>
-            <input type="text" id="answer" placeholder="Sua resposta">
+            <h3 id="questao">Questão: <span id="question"></span></h3>
+            <input type="text" id="answer" placeholder="Sua resposta"><br>
             <p id="contAnswer" style="display: none;"></p>
-            <button onclick="checkAnswer()">Enviar Resposta</button>
+            <button id="submit-btn" onclick="checkAnswer()">Enviar Resposta</button>
         </div>
-        <p>Fases Restantes: <span id="stagesLeft"></span></p>
-    <p>Quantidade de Acertos: <span id="correctCount">0</span></p> 
+        <p id="fasesRestantes">Fases Restantes: <span id="stagesLeft"></span></p>
+    <p id="fasesContador">Quantidade de Acertos: <span id="correctCount">0</span></p> 
+
+        <div class="animationGamescreen">
+            <span>.</span>
+            <span>.</span>
+            <span>.</span>
+            <span>.</span>
+            <span>.</span>
+            <span>.</span>
+            <span>.</span>
+            <span>.</span>
+            <span>.</span>
+            <span>.</span>
+        </div>
+
     </div>
 
     <div id="winScreen">
-        <h1>Parabéns! Você venceu!</h1>
-        <button onclick="restartGame()">Jogar Novamente</button>
+        <p>Você venceu!</p>
+        <button onclick="restartGame()" id="novamente">Jogar Novamente</button>
     </div>
 
     <div id="loseScreen" style="display: none;">
         <p>Você perdeu!</p>
-        <p id="correctAnswerMessage" style="color: red; display: none;"></p> 
-        <button onclick="restartGame()">Jogar Novamente</button>
+        <h3 id="correctAnswerMessage"></h3>
+        <button onclick="restartGame()" id="novamente">Jogar Novamente</button>
     </div>
     
     <div id="level">

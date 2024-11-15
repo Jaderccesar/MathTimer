@@ -1,7 +1,7 @@
-let timeLeft = 10;
+
 let totalStages = Infinity;
 let currentStage = 1;
-let timerInterval, progressInterval;
+let progressInterval;
 let sinal = "";
 let isEasy = false;
 let isMedium = false;
@@ -10,6 +10,32 @@ let isFree = false;
 let cont;
 let correctAnswer;
 let contador = 0;
+let timerInterval;
+let timeLeft;
+let totalTime;
+let startTime;
+
+const cursor = document.querySelector(".cursor");
+var timeout;
+
+document.addEventListener("mousemove", (e) => {
+    let x = e.pageX;
+    let y = e.pageY;
+
+    cursor.style.top = y + "px";
+    cursor.style.left = x + "px";
+    cursor.style.display = "block";
+    
+    function mouseStopped() {
+        cursor.style.display = "none"
+    }
+    clearTimeout(timeout);
+    timeout = setTimeout(mouseStopped, 1000);
+})
+
+document.addEventListener("mouseout", () => {
+    cursor.style.display = "none";
+})
 
 function startGame() {
     document.getElementById('startScreen').style.display = 'none';
@@ -29,43 +55,57 @@ function nivel() {
 
 function startTimer() {
     timeLeft = isEasy ? 20 : isMedium ? 10 : 5;
-    updateTimer();
-    resetProgressBar();
+    totalTime = isEasy ? 20 : isMedium ? 10 : isHard ? 5 : 10;
 
+    updateTimer();  
+    resetProgressBar();  
+   
+    startProgressAnimation();
+
+    
     timerInterval = setInterval(() => {
         if (timeLeft > 0) {
-            timeLeft--;
-            updateTimer();
-            updateProgressBar();
+            timeLeft--; 
+            updateTimer();  
+        } else {
+            clearInterval(timerInterval);  
+            endGame(false);  
         }
-        
-        if (timeLeft <= 0) {
-            clearInterval(timerInterval);
-            endGame(false);
-        }
-    }, 1000);
+    }, 1000); 
 }
 
 function updateTimer() {
-    document.getElementById('timer').innerText = timeLeft;
+    document.getElementById('timer').innerText = timeLeft;  
 }
 
 function resetProgressBar() {
-    document.getElementById('progress').style.width = '0%';
+    document.getElementById('progress').style.width = '0%';  
 }
 
-function updateProgressBar() {
-    let progressElem = document.getElementById('progress');
-    let maxTime = isEasy ? 20 : isMedium ? 10 : isHard ? 5 : 10;
-    let progressPercent = ((maxTime - timeLeft) / maxTime) * 100;
+function startProgressAnimation() {
+    const progressElem = document.getElementById('progress');
+    startTime = Date.now();
 
-    if (timeLeft <= 0) {
-        progressPercent = 100;
+    function animateProgress() {
+        const elapsedTime = Date.now() - startTime;
+        let progressPercent = (elapsedTime / (totalTime * 1000)) * 100;  
+
+        if (progressPercent >= 100) {
+            progressPercent = 100;
+            clearInterval(timerInterval);
+            endGame(false);  
+        }
+
+        
+        progressElem.style.width = progressPercent + '%';
+
+        if (progressPercent < 100) {
+            requestAnimationFrame(animateProgress); 
+        }
     }
 
-    progressElem.style.width = progressPercent + '%';
+    requestAnimationFrame(animateProgress);  
 }
-
 
 function updateQuestion() {
     let sinalAleatorio = Math.floor(Math.random() * 20);
@@ -118,7 +158,7 @@ function checkAnswer() {
         currentStage++;
         contador++;
         document.getElementById('correctAnswerMessage').style.display = 'none'; 
-        ocument.getElementById('correctCount').innerText = contador;
+        document.getElementById('correctCount').innerText = contador;
         if (currentStage > totalStages) {
             endGame(true);
         } else {

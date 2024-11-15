@@ -1,6 +1,11 @@
 body { font-family: Arial, sans-serif; 
     background: linear-gradient(to right, #030303, #242424);
     text-align: center; 
+    cursor: none;
+}
+
+html{
+    cursor: none;
 }
 
 .math{
@@ -20,6 +25,23 @@ body { font-family: Arial, sans-serif;
     font-family: bignoodletitling;
 }
 
+#timer2{
+    margin-top: 5%;
+    position: relative;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+    background: #262626 -webkit-gradient(linear, left top, right top, from(#262626), to(#262626), color-stop(0.5, #643d88)) 0 0 no-repeat;
+    -webkit-background-size: 150px;
+    background-size: 150px;
+    color: rgba(255, 255, 255, 0.1);
+    -webkit-background-clip: text;
+    animation: animate 7s infinite;
+    font-size: 70px;
+    font-family: bignoodletitling;
+}
+
 @keyframes animate{
     0%, 10%{
         background-position: -1350px;
@@ -29,11 +51,56 @@ body { font-family: Arial, sans-serif;
     }
 }
 
+#question{
+    margin-top: 5%;
+    position: relative;
+    font-size: 70px;
+    letter-spacing: 15px;
+    color: #262626;
+    text-transform: uppercase;
+    width: 100%;
+    top: 25%;
+    -webkit-box-reflect: below 1px linear-gradient(transparent, #bf7bffc7);
+    line-height: 0.70em;
+    outline: none;
+    animation: animateLight 5s linear infinite;
+}
+
+#questao{
+    margin-top: 10%;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+    -webkit-background-size: 150px;
+    background-size: 150px;
+    color: rgba(255, 255, 255, 0.849);
+    -webkit-background-clip: text;
+    font-size: 70px;
+    font-family: bignoodletitling;
+}
+
+@keyframes animateLight {
+    0%,18%,20%,50.1%,60%,65.1%,80%,90.1%,92%{
+        color: #262626;
+        text-shadow: none;
+    }
+    18.1%,20.2%,30%,50%,60.1%,65%,80.1%,90%,92.1%,100%{
+        color: #fff;
+        text-shadow: 0 0 10px #bf7bffc7, 
+        0 0 20px #bf7bffc7,
+        0 0 40px #bf7bffc7,
+        0 0 80px #bf7bffc7,
+        0 0 160px #bf7bffc7;
+    }
+}
+
 #botaoIniciar{
     --glow-color: #d9b0ff;
     --glow-spread-color: #bf7bffc7;
     --enhanced-glow-color: #e7ceff;
-    --btn-color: #643d88;
+    --btn-color: rgb(101, 62, 137);
     border: .25em solid var(--glow-color);
     padding: 1em 3em;
     color: var(--glow-color);
@@ -49,6 +116,7 @@ body { font-family: Arial, sans-serif;
     position: relative;
     transition: all 0.3s;
     transform: translateY(-150px);
+    cursor: none;
 }
 
 #botaoIniciar::after {
@@ -73,7 +141,7 @@ body { font-family: Arial, sans-serif;
            inset 0 0 .75em .25em var(--glow-color);
    }
    
-   :active {
+   #botaoIniciar:active {
     box-shadow: 0 0 0.6em .25em var(--glow-color),
            0 0 2.5em 2em var(--glow-spread-color),
            inset 0 0 .5em .25em var(--glow-color);
@@ -143,6 +211,7 @@ body { font-family: Arial, sans-serif;
     text-align: justify;
     position: relative;
     margin-left: 50px;
+    cursor: none;
 }
 
 .dificuldade h2{
@@ -253,23 +322,291 @@ body { font-family: Arial, sans-serif;
     }
 }
 
+
 #gameScreen, #winScreen, #loseScreen { 
     display: none;
  }
         
 
-#progressBar {
-     width: 100%;
-      background-color: #ddd;
-     }
-        
-
-#progress { 
-    width: 0%; 
-    height: 30px; 
-    background-color: green; 
+ #progressBar {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #ddd;
+    height: 30px;
+    width: 600px;
+    border-radius: 20px;
 }
-        
+
+#progress {
+    font-family: sans-serif;
+    font-weight: bolder;
+    color: #fff;
+    height: 100%;
+    background: linear-gradient(to left, rgb(101, 62, 137), rgba(191, 123, 255, 0.78));
+    display: grid;
+    place-items: center;
+    width: 0%;
+    box-shadow: 0 0 3px -5px rgb(101, 62, 137), 0 3px 15px, rgb(101, 62, 137);
+    height: 30px;
+    border-radius: 20px;
+    transition: width .3s ease;
+}      
+
+#answer {
+    width: 25%;
+    padding: 12px 20px;
+    font-size: 18px;
+    border: 2px solid #643d88; 
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.1); 
+    color: #fff;
+    text-align: center;
+    box-shadow: 0 0 8px rgba(101, 62, 137, 0.5); 
+    transition: all 0.3s ease;
+    position: relative;
+    top: -80px;
+    cursor: none;
+}
+
+
+#answer:focus {
+    outline: none;
+    border-color: #d9b0ff;
+    box-shadow: 0 0 10px #d9b0ff; 
+}
+
+
+#submit-btn {
+    padding: 12px 30px;
+    font-size: 20px;
+    background-color: #643d88; 
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(101, 62, 137, 0.5); 
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 20px;
+    position: relative;
+    top: -80px;
+    cursor: none;
+}
+
+
+#submit-btn:hover {
+    background-color: #d9b0ff; 
+    transform: translateY(-4px); 
+    box-shadow: 0 0 15px rgba(191, 123, 255, 0.6);
+}
+
+
+#submit-btn:active {
+    transform: translateY(2px); 
+    box-shadow: 0 0 10px rgba(101, 62, 137, 0.5);
+}
+
+#fasesRestantes, #fasesContador{
+    font-size: 15px;
+    color: #fff;
+}
+
+.cursor{
+    z-index: 999;
+    position: fixed;
+    background: #643d88;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    pointer-events: none;
+    box-shadow: 0 0 20px #643d88,
+                0 0 60px #643d88,
+                0 0 100px #643d88;
+    animation: colors 5s infinite linear;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+
+@keyframes colors{
+    0% {
+        filter: hue-rotate(340deg);
+    }
+    25% {
+        filter: hue-rotate(345deg);
+    }
+    50% {
+        filter: hue-rotate(350deg);
+    }
+    75% {
+        filter: hue-rotate(355deg);
+    }
+    100% {
+        filter: hue-rotate(360deg);
+    }
+}
+
+.cursor:before{
+    content: '';
+    position: absolute;
+    background: #643d88;
+    width: 50px;
+    height: 50px;
+    opacity: 0.2;
+    transform: translate(-50%, -30%);
+    border-radius: 50%;
+}
+
+#gameScreen{
+    position: flex;
+    margin-top: 10%;
+    z-index: 1;
+}
+
+.animationGamescreen span{
+    position: fixed;
+    color: #18191f;
+    text-shadow: 0 0 25px aliceblue,
+                 0 0 50px #7121bd,
+                 0 0 100px #7121bd,
+                 0 0 150px aliceblue;
+    animation: animateGamescreen 10s linear infinite;
+    font-size: 100px;
+    font-family: bebas neue;
+    z-index: -1;
+    bottom: -100px;
+}
+
+.animationGamescreen span:nth-child(1){
+    left: 60px;
+    animation-delay: 0.6s;
+}
+
+.animationGamescreen span:nth-child(2){
+    left: 10%;
+    animation-delay: 3s;
+}
+
+.animationGamescreen span:nth-child(3){
+    left: 20%;
+    animation-delay: 2s;
+}
+
+.animationGamescreen span:nth-child(4){
+    left: 30%;
+    animation-delay: 5s;
+}
+
+.animationGamescreen span:nth-child(5){
+    left: 40%;
+    animation-delay: 1s;
+}
+
+.animationGamescreen span:nth-child(6){
+    left: 50%;
+    animation-delay: 7s;
+}
+
+.animationGamescreen span:nth-child(7){
+    left: 60%;
+    animation-delay: 6s;
+}
+
+.animationGamescreen span:nth-child(8){
+    left: 70%;
+    animation-delay: 8s;
+}
+
+.animationGamescreen span:nth-child(9){
+    left: 80%;
+    animation-delay: 6s;
+}
+
+.animationGamescreen span:nth-child(10){
+    left: 90%;
+    animation-delay: 4s;
+}
+
+@keyframes animateGamescreen{
+    0%{
+       transform: translateY(0);
+       opacity: 1; 
+    }
+    70%{
+        opacity: 0.8;
+    }
+    100%{
+        transform: translateY(-800px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+#winScreen, #loseScreen p{
+    margin-top: 15%;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+    background: #f0e5e5;
+    -webkit-background-size: 150px;
+    background-size: 150px;
+    color: rgba(255, 255, 255, 0.1);
+    -webkit-background-clip: text;
+    font-size: 165px;
+    font-family: bignoodletitling;
+}
+
+#correctAnswerMessage{
+    position: relative;
+    top: -200px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+    background: #f0e5e5;
+    -webkit-background-size: 150px;
+    background-size: 150px;
+    color: rgba(255, 255, 255, 0.1);
+    -webkit-background-clip: text;
+    font-size: 55px;
+    font-family: bignoodletitling;
+}
+
+#novamente {
+  --b: 3px;   
+  --s: .45em; 
+  --color: #643d88;
+  padding: calc(.5em + var(--s)) calc(.9em + var(--s));
+  color: var(--color);
+  --_p: var(--s);
+  background:
+    conic-gradient(from 90deg at var(--b) var(--b),#0000 90deg,var(--color) 0)
+    var(--_p) var(--_p)/calc(100% - var(--b) - 2*var(--_p)) calc(100% - var(--b) - 2*var(--_p));
+  transition: .3s linear, color 0s, background-color 0s;
+  outline: var(--b) solid #0000;
+  outline-offset: .6em;
+  font-size: 16px;
+  border: 0;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  top: -200px;
+  position: relative;
+}
+
+#novamente:hover,
+#novamente:focus-visible{
+  --_p: 0px;
+  outline-color: var(--color);
+  outline-offset: .05em;
+}
+
+#novamente:active {
+  background: var(--color);
+  color: #fff;
+}
+
+
 
 .hidden { 
     display: none;
