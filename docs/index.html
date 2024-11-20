@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo Matemático</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="cursor"></div>
+
+    <div id="startScreen">
+        <h1 class="math">MathTimer</h1>
+        <button onclick="nivel()" id="botaoIniciar">Iniciar Jogo</button>
+
+        <div class="backgroundAnimation">
+            <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        </div>
+
+    </div>
+
+    <div id="gameScreen">
+        <div>
+            <h2 id="timer2">Tempo Restante: <span id="timer">10</span> segundos</h2>
+            <div id="progressBar"><div id="progress"></div></div>
+            <h3 id="questao">Questão: <span id="question"></span></h3>
+            <input type="text" id="answer" placeholder="Sua resposta"><br>
+            <p id="contAnswer" style="display: none;">0</p>
+            <button id="submit-btn" onclick="checkAnswer()">Enviar Resposta</button>
+        </div>
+        <p id="fasesRestantes">Fases Restantes: <span id="stagesLeft"></span></p>
+    <p id="fasesContador">Quantidade de Acertos: <span id="correctCount">0</span></p> 
+
+        <div class="animationGamescreen">
+            <span>.</span>
+            <span>.</span>
+            <span>.</span>
+            <span>.</span>
+            <span>.</span>
+            <span>.</span>
+            <span>.</span>
+            <span>.</span>
+            <span>.</span>
+            <span>.</span>
+        </div>
+
+    </div>
+
+    <div id="winScreen">
+        <p>Você venceu!</p>
+        <button onclick="restartGame()" id="novamente">Jogar Novamente</button>
+    </div>
+
+    <div id="loseScreen" style="display: none;">
+        <p>Você perdeu!</p>
+        <h3 id="correctAnswerMessage"></h3>
+        <button onclick="restartGame()" id="novamente">Jogar Novamente</button>
+    </div>
+    
+    <div id="level">
+        <h1>Selecione o modo de jogo!</h1>
+        <button onclick="setEasy()" class="dificuldade">
+            <h2>Fácil</h2>
+            <p>
+                Operações: Apenas adição e subtração; <br><br>
+                Números: Intervalo pequeno;<br><br>
+                Penalidade de Erro: Pequena redução no tempo; <br><br>
+                Número de Fases: 15.
+            </p>
+        </button>
+        <button onclick="setMedium()" class="dificuldade">
+            <h2>Médio</h2>
+            <p>
+                Operações: Todas as quatro operações básicas (+, -, *, /); <br><br>
+                Números: Intervalo moderado;<br><br>
+                Penalidade de Erro: Penalidade média de tempo; <br><br>
+                Número de Fases: 25.
+            </p>
+        </button>
+        <button onclick="setHard()" class="dificuldade">
+            <h2>Dificil</h2>
+            <p>
+                Operações: Todas as operações básicas, com cálculos mais complexos; <br><br>
+                Números: Intervalo maior;<br><br>
+                Penalidade de Erro: Penalidade alta de tempo; <br><br>
+                Número de Fases: 35.
+            </p>
+        </button>
+        <button onclick="setFree()" class="dificuldade">
+            <h2>Modo Livre</h2>
+            <p>
+                Desafio Progressivo: Sem limite de fases. O jogo continua indefinidamente até o tempo acabar; <br><br>
+                Aumento de Dificuldade: A dificuldade aumenta à medida que o jogador avança, com números maiores e operações mais complexas.;<br><br>
+                Penalidade de Tempo: Penalidade progressiva, com redução de tempo crescente a cada erro. <br><br>
+            </p>
+        </button>
+
+        <div class="backgroundAnimationLevel">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>
