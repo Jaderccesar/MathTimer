@@ -73,13 +73,13 @@ function updateQuestion() {
     let sinalAleatorio = Math.floor(Math.random() * 20);
     let num1, num2;
 
-    if (sinalAleatorio >= 15 && sinalAleatorio <= 20 && (isMedium || isHard || isFree)) {
+    if (sinalAleatorio >= 15 && sinalAleatorio <= 20 && (isMedium == true || isHard == true || isFree == true)) {
         num1 = Math.floor(Math.random() * 30) + 1;
         num2 = Math.floor(Math.random() * 10) + 1;
         sinal = "/";
         correctAnswer = num1 / num2;
         document.getElementById('question').innerText = `${num1} / ${num2}`;
-    } else if (sinalAleatorio >= 10 && sinalAleatorio <= 15 && (isMedium || isHard || isFree)) {
+    } else if (sinalAleatorio >= 10 && sinalAleatorio <= 15 && (isMedium == true || isHard == true || isFree == true)) {
         num1 = Math.floor(Math.random() * 30);
         num2 = Math.floor(Math.random() * 30);
         sinal = "*";
